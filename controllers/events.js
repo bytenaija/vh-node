@@ -15,7 +15,7 @@ var addEvent = (req, res) => {
         if (event) {
             res.status(400).json({error: true, message: 'Event alread exists'});
         }else{
-            events.create({id: event.id, })
+            events.create({id: event.id, t})
         }
     })
     
