@@ -17,8 +17,7 @@ var addEvent = (req, res) => {
         }else{
             events.create(
                 {
-                    id: event.id,
-                    type: event.type,
+                    id: event.id,                    type: event.type,
                     
                 }
                 )
