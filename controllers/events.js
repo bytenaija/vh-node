@@ -41,7 +41,7 @@ var addEvent = (req, res) => {
 var getByActor = (req, res) => {
     events.findOne({actor: req.params.actorID})
     .then(event => {
-        
+        res.
     })
 };
 
