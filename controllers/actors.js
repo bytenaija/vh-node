@@ -41,11 +41,11 @@ const getAllActors = (req, res) => {
                       return true
                     } else {
 
-                      return a.actor.login - b.actor.login
+                      return a.actor.login > b.actor.login
                     }
                   }
                 }else{
-                  return true
+                  return a.actor.login < b.actor.login
                 }
 
               })
@@ -59,7 +59,7 @@ const getAllActors = (req, res) => {
             res.status(200).json(actors)
           }
         })
-      
+
 
 
 
