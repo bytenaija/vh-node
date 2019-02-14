@@ -4,14 +4,9 @@ let EventSchema = mongoose.Schema({
     id: String,
     type: String,
     actor: {type: mongoose.SchemaTypes.ObjectId, ref: 'Actor'},
-    repo: {type: mongoose.SchemaTypes.ObjectId, ref: 'Re'},
+    repo: {type: mongoose.SchemaTypes.ObjectId, ref: 'Repo'},
     
 },
-{
-    timestamps: {
-        createdAt: 'created_at',
-        updatedAt: false
-    }
-});
+);
 
 
