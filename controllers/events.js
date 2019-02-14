@@ -49,7 +49,9 @@ var getByActor = (req, res) => {
             res.status(404).json({success: false, 'Event of that ID not available'})
         }
         
-    }).catch(err)
+    }).catch(err =>{
+        
+    })
 };
 
 var eraseEvents = (req, res) => {
