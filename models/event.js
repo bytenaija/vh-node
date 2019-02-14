@@ -12,7 +12,7 @@ EventSchema.virtual('actor', {
   foreignField: 'events'
 });
 
-EventSchema.virtual('actor', {
+EventSchema.virtual('repo', {
   ref: 'Actor',
   localField: 'id',
   foreignField: 'events'
