@@ -38,7 +38,7 @@ var addEvent = (req, res) => {
     });
 };
 
-var getByActor = () => {
+var getByActor = (req, res) => {
     events.findOne({actor})
 };
 
