@@ -40,6 +40,8 @@ var addEvent = (req, res) => {
 
 var getByActor = (req, res) => {
     events.findOne({actor: req.params.actorID})
+    .populate('actor')
+    .populate('')
     .then(event => {
         res.json()
     })
