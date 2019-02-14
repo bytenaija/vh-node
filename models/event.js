@@ -11,3 +11,4 @@ EventSchema.virtual('actor', {
   localField: 'id',
   foreignField: 'events'
 });
+
