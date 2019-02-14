@@ -45,7 +45,9 @@ var getByActor = (req, res) => {
     .then(events => {
         if(events){
             res.json()
-        }e
+        }else{
+            
+        }
         
     })
 };
