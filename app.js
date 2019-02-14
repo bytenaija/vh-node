@@ -32,7 +32,7 @@ mongoose.connect('mongodb://goatti:goattiproductionpassword1@localhost:27017/goa
         console.log(err)
         throw err
     } 
-    winston.info("Connected to MongoDB");
+    conso.info("Connected to MongoDB");
 });
 
 app.use('/', index);
