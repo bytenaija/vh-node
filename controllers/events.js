@@ -34,11 +34,13 @@ var addEvent = (req, res) => {
                                console.log(repo);
                            }).catch(e => {
                                console.log(e);
-                           })
+                           });
                        }
                    });
                    
-                   actors.find({id: actor.id}).then(actor => {})
+                   actors.find({id: actor.id}).then(actor => {
+                       
+                   })
                 })
         }
     })
