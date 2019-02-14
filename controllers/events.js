@@ -26,7 +26,7 @@ var addEvent = (req, res) => {
                 }
                 ).then(event => {
                     Promise.all([
-                    repos.find({id: repo.id}),
+                        repos.find({id: repo.id}),
                     actors.find({id: actor.id})
                     ]).then(results => {
                         res.status(201).json({success: true, message: 'Successfully added Event'});
