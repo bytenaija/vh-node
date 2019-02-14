@@ -5,10 +5,14 @@ const Event = require('../models/event');
 var getAllEvents = (req, res) => {
     Event.find({}).sort({
       'id': 'asc'
-    }).populate('actor').populate('repo')
+    }).populate('actor', '-_id -__v').populate('repo', '-_id -__v')
     .then(events => {
 
-      res.status(200).json(events)
+      if(events){
+
+          res.status(200).json(events)
+      }
+
     })
     .catch(err =>{
       console.log(err)
@@ -25,10 +29,12 @@ var addEvent = (req, res) => {
     let  event  = req.body;
 
     let { repo, actor } = event;
-    console.log(event)
+    // console.log(event)
     Event.find({id: event.id})
     .then(eventResult => {
+
         if (eventResult.length > 0) {
+
             res.status(400).json({error: true, message: 'Event alread exists'});
         } else {
             Event.create(
@@ -42,7 +48,7 @@ var addEvent = (req, res) => {
                 ).then(event => {
                     return Promise.all([
                         Repo.findOne({id: repo.id}).then(repoResult =>{
-                          console.log(repoResult)
+
                           if (repoResult) {
                             return Promise.resolve()
                           }else{
@@ -50,7 +56,7 @@ var addEvent = (req, res) => {
                           }
                         }),
                         Actor.findOne({id: actor.id}).then(actorResult =>{
-                          console.log(actorResult)
+
                           if (actorResult) {
                             return Promise.resolve()
                           } else {
@@ -76,11 +82,12 @@ var addEvent = (req, res) => {
 };
 
 var getByActor = (req, res) => {
-    Event.find({actor: req.params.actorID}).sort({'id': 'asc'})
-    .populate('actor')
-    .populate('repo')
+    Event.find({actorId: req.params.actorID}).sort({'id': 'asc'})
+    .populate('actor', '-_id -__v')
+    .populate('repo', '-_id -__v')
     .then(events => {
         if (events) {
+
             res.status(200).json(events);
         } else {
             res.status(404).json({success: false, message: 'Event of that ID not available'});
@@ -91,7 +98,8 @@ var getByActor = (req, res) => {
 };
 
 var eraseEvents = (req, res) => {
-    Event.remove({}).then(result => res.status(200).json());
+  console.log("erasing")
+    Event.deleteMany({}).then(result => res.status(200)).catch(err => console.log(err));
 };
 
 module.exports = {

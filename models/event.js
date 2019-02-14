@@ -1,37 +1,31 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const moment = require('moment');
 
 let EventSchema = mongoose.Schema({
-    id: String,
-    type: String,
-    actorId: String,
-    repoId: String,
-    created_at: Date
+  id: String,
+  type: String,
+  actorId: String,
+  repoId: String,
+  created_at: Date
 },
-  {
-    toObject: {
-      virtuals: true,
-      transform: (doc, ret, options) => {
-        delete ret.__v;
-        delete ret._id;
-      },
-    },
-    toJSON: {
-      virtuals:true,
-      transform: (doc, ret, options) => {
-        delete ret.__v;
-        delete ret._id;
-      },
-    }
-  }
-  );
-
-  EventSchema.set('toJSON', {
+{
+  toObject: {
     virtuals: true,
     transform: (doc, ret, options) => {
       delete ret.__v;
-      delete ret._id;
+       ret.created_at = moment(ret.created_at).format('YYYY-MM-DD HH:mm:ss')
+  },
+  },
+  toJSON: {
+    virtuals:true,
+    transform: (doc, ret, options) => {
+      delete ret.__v;
+      ret.created_at = moment(ret.created_at).format('YYYY-MM-DD HH:mm:ss')
     },
-  })
+  }
+}
+  );
+
 
 EventSchema.virtual('actor', {
   ref: 'Actor',

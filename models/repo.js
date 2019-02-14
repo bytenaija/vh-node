@@ -4,24 +4,7 @@ const RepoSchema = mongoose.Schema({
   id: String,
   name: String,
   url: String,
-},
-{
-  _id: false,
-  __v: false,
-  toJSON: {
-    transform: function (doc, ret) {
-
-      delete ret._id;
-    }
-  },
-  toObject: {
-    transform: function (doc, ret) {
-
-      delete ret._id;
-    }
-  },
-}
-  );
+});
 
 
 RepoSchema.methods.toJSON = function () {

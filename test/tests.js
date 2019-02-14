@@ -27,7 +27,7 @@ describe('git_test ', function() {
 					i += 1;
 					if (line) {
 						event.push(line);
-					}	
+					}
 				});
 				Promise.mapSeries(event, (e) => {
 					let eve = JSON.parse(e);
@@ -82,7 +82,8 @@ describe('git_test ', function() {
 							let ar2 = e.response.body;
 							if(e.response.status_code == 404) {
 								continue;
-							}
+              }
+              console.log("Collector", ar2.length, ar1.length)
 		 					expect(ar2.length).to.equal(ar1.length);
 							for (let k = 0; k < ar1.length; k++) {
 								expect(ar2[k]).to.deep.equal(ar1[k]);
