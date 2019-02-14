@@ -46,7 +46,7 @@ var getByActor = (req, res) => {
         if(events){
             res.status(200).json()
         }else{
-            res.status(404).json({success:})
+            res.status(404).json({success: false, ''})
         }
         
     })
