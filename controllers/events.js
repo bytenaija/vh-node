@@ -25,7 +25,7 @@ var addEvent = (req, res) => {
                     created_at: event.created_at
                 }
                 ).then(event => {
-                   repo.find({id: repo.id})
+                   repos.find({id: repo.id})
                    .then(repo => {
                        if (repo) {
                            console.log(repo);
@@ -38,7 +38,7 @@ var addEvent = (req, res) => {
                        }
                    });
                    
-                   actors
+                   actors.
                 })
         }
     })
