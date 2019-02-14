@@ -5,7 +5,7 @@ var getAllEvents = (req, res) => {
     .catch(err => res.status(500).json({error: err}));
 };
 
-var addEvent = () => {
+var addEvent = (r) => {
 
 };
 
