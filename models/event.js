@@ -9,5 +9,4 @@ let EventSchema = mongoose.Schema({
 EventSchema.virtual('actor', {
   ref: 'Actor',
   localField: 'id',
- 
 });
