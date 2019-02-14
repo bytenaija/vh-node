@@ -5,7 +5,7 @@ let EventSchema = mongoose.Schema({
     type: String,
     actor: {type: mongoose.SchemaTypes.ObjectId, ref: 'Actor'},
     repo: {type: mongoose.SchemaTypes.ObjectId, ref: 'Repo'},
-    cra
+    created_at
 });
 
 
