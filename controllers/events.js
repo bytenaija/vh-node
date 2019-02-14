@@ -39,7 +39,7 @@ var addEvent = (req, res) => {
 };
 
 var getByActor = () => {
-    events.fi
+    events.findOne({a})
 };
 
 var eraseEvents = (req, res) => {
