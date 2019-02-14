@@ -6,7 +6,7 @@ const getAllActors = (req, res) => {
   console.log("Getting")
   Actor.find({}, '-_id -__v').then(actors => {
     let allActors = []
-    if (actors.length > 0) {
+
       actors.forEach(async (actor, index) => {
 
         let events = await Event.find({
@@ -58,7 +58,8 @@ const getAllActors = (req, res) => {
 
             res.status(200).json(actors)
           }
-        }
+        })
+      
 
 
 

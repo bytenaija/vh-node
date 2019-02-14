@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
-
+/* eslint-disable */
 let EventSchema = mongoose.Schema({
   id: Number,
   type: String,
@@ -50,4 +50,11 @@ EventSchema.methods.toJSON =  function (){
   return obj;
 }
 
+
+EventSchema.pre('remove', function (next) {
+  // Remove all the assignment docs that reference the removed person.
+  this.model('Actor').remove({
+    event: this.id
+  }, next);
+});
 module.exports = mongoose.model('Event', EventSchema);
