@@ -1,6 +1,6 @@
 const events =  require('../models/event')
 var getAllEvents = () => {
-    events.find({}).then
+    events.find({}).then()
 };
 
 var addEvent = () => {
