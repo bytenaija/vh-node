@@ -11,7 +11,7 @@ var getAllEvents = (req, res) => {
 var addEvent = (req, res) => {
     let { event } = req.body;
     let { repo, actor } = event;
-    events.find
+    events.find({})
     events.create({id: event.id, })
 };
 
