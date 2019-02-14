@@ -39,7 +39,7 @@ var addEvent = (req, res) => {
                    });
                    actors.find({id: actor.id}).then(actor => {
                        if (actor) {
-                           consle.log(ac)
+                           consle.log(actor)
                        } else {
                            
                        }
