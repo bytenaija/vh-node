@@ -1,45 +1,82 @@
-const events = require('../models/event');
-const repos = require('../models/repo');
-const actors = require('../models/actor');
-
+const Repo = require('../models/repo');
+const Actor = require('../models/actor');
+const Event = require('../models/event');
+/* eslint-disable */
 var getAllEvents = (req, res) => {
-    events.find({}).sort({'id': 'asc'})
-    .then(events => res.status(200).json(events))
-    .catch(err => res.status(500).json({error: err}));
+    Event.find({}).sort({
+      'id': 'asc'
+    }).populate('actor').populate('repo')
+    .then(events => {
+
+      res.status(200).json(events)
+    })
+    .catch(err =>{
+      console.log(err)
+      res.status(500).json({
+        error: err
+      })
+    }
+
+      );
 };
 
 var addEvent = (req, res) => {
-    let { event } = req.body;
+
+    let  event  = req.body;
+
     let { repo, actor } = event;
-    events.find({id: event.id})
-    .then(event => {
-        if (event) {
+    console.log(event)
+    Event.find({id: event.id})
+    .then(eventResult => {
+        if (eventResult.length > 0) {
             res.status(400).json({error: true, message: 'Event alread exists'});
         } else {
-            events.create(
+            Event.create(
                 {
                     id: event.id,
                     type: event.type,
-                    actor: actor.id,
-                    repo: repo.id,
+                    actorId: actor.id,
+                    repoId: repo.id,
                     created_at: event.created_at
                 }
                 ).then(event => {
-                    Promise.all([
-                        repos.find({id: repo.id}),
-                        actors.find({id: actor.id})
+                    return Promise.all([
+                        Repo.findOne({id: repo.id}).then(repoResult =>{
+                          console.log(repoResult)
+                          if (repoResult) {
+                            return Promise.resolve()
+                          }else{
+                            return Repo.create(repo)
+                          }
+                        }),
+                        Actor.findOne({id: actor.id}).then(actorResult =>{
+                          console.log(actorResult)
+                          if (actorResult) {
+                            return Promise.resolve()
+                          } else {
+                            return Actor.create(actor)
+                          }
+                        })
                         ]).then(results => {
                             res.status(201).json({success: true, message: 'Successfully added Event'});
                         }).catch(err => {
+                          console.log(err)
+
                              res.status(400).json(err);
                         });
+                }).catch(err => {
+                  console.log(err);
+                  res.status(400).json(err);
                 });
         }
+    }).catch(err =>{
+      console.log(err);
+       res.status(400).json(err);
     });
 };
 
 var getByActor = (req, res) => {
-    events.find({actor: req.params.actorID}).sort({'id': 'asc'})
+    Event.find({actor: req.params.actorID}).sort({'id': 'asc'})
     .populate('actor')
     .populate('repo')
     .then(events => {
@@ -54,7 +91,7 @@ var getByActor = (req, res) => {
 };
 
 var eraseEvents = (req, res) => {
-    events.remove({}).then(result => res.status(200).json());
+    Event.remove({}).then(result => res.status(200).json());
 };
 
 module.exports = {

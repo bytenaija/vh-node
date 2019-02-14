@@ -32,6 +32,15 @@ mongoose.connect('mongodb://root:vanhack1@ds135335.mlab.com:35335/vanhack', {
         console.log(err);
         throw err;
     }
+    mongoose.plugin((schema) => {
+      schema.options.toJSON = {
+        virtuals: true,
+        versionKey: false,
+        transform(doc, ret) {
+          delete ret._id;
+        }
+      };
+    });
     console.log('Connected to MongoDB');
 });
 
