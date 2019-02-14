@@ -31,7 +31,7 @@ var addEvent = (req, res) => {
                     ]).then(results => {
                         res.status(201).json();
                     }).catch(err => {
-                         res.status().json();
+                         res.status(400).json(err);
                     });
                    
                 });
