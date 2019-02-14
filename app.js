@@ -28,11 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb://goatti:goattiproductionpassword1@localhost:27017/goatti', {
     useNewUrlParser: true
 }, (err, connect) => {
-    if (err){
+    if (err) {
         console.log(err)
         throw err
     } 
-    console.lo("Connected to MongoDB");
+    console.log("Connected to MongoDB");
 });
 
 app.use('/', index);
