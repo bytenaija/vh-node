@@ -39,7 +39,7 @@ var addEvent = (req, res) => {
 };
 
 var getByActor = (req, res) => {
-    events.find({actor: req.params.actorID})
+    events.find({actor: req.params.actorID}).sort({'id': 'asc'})
     .populate('actor')
     .populate('repo')
     .then(events => {
