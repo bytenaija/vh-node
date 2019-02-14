@@ -50,7 +50,7 @@ var getByActor = (req, res) => {
         }
     }).catch(err => {
         res.status(500).json({success: false, message: 'An error occured. Pleas try again later'});
-    })
+    });
 };
 
 var eraseEvents = (req, res) => {
