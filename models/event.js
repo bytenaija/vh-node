@@ -9,4 +9,4 @@ let EventSchema = mongoose.Schema({
 });
 
 
-module.ex =  mongoose.model('Event', EventSchema)
+module.exports =  mongoose.model('Event', EventSchema)
