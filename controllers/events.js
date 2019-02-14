@@ -30,9 +30,9 @@ var addEvent = (req, res) => {
                        if (repo) {
                            return;
                        } else {
-                           repo.create(repo).then(repo =>{
+                           repo.create(repo).then(repo => {
                                console.log(repo)
-                           }).catch(e =>{
+                           }).catch(e => {
                                console.log(e)
                            })
                        }
