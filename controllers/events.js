@@ -39,7 +39,7 @@ var addEvent = (req, res) => {
 };
 
 var getByActor = () => {
-
+    ev
 };
 
 var eraseEvents = (req, res) => {
