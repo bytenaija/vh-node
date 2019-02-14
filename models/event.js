@@ -9,4 +9,4 @@ let EventSchema = mongoose.Schema({
 });
 
 
-fault =  mongoose.model('Event', EventSchema)
+m =  mongoose.model('Event', EventSchema)
