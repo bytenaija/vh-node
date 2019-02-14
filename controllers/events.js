@@ -18,7 +18,7 @@ var addEvent = (req, res) => {
             events.create()
         }
     })
-    events.create({id: event.id, })
+    
 };
 
 var getByActor = () => {
