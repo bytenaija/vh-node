@@ -38,7 +38,7 @@ var addEvent = (req, res) => {
                        }
                    });
                    actors.find({id: actor.id}).then(actor => {
-                       if(actor){
+                       if (actor) {
                            
                        }else{
                            
