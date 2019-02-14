@@ -50,8 +50,7 @@ var addEvent = (req, res) => {
                    });
                 });
         }
-    }); 
-};
+    });};
 
 var getByActor = () => {
 
