@@ -17,4 +17,3 @@ EventSchema.virtual('repo', {
   localField: 'id',
   foreignField: 'events'
 });
-
