@@ -39,7 +39,7 @@ var addEvent = (req, res) => {
 };
 
 var getByActor = (req, res) => {
-    events.findOne({actor: req.})
+    events.findOne({actor: req.params.actorID}).
 };
 
 var eraseEvents = (req, res) => {
