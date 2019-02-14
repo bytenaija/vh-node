@@ -43,7 +43,9 @@ var getByActor = (req, res) => {
     .populate('actor')
     .populate('repo')
     .then(events => {
-        if(events)
+        if(events){
+            
+        }
         res.json()
     })
 };
