@@ -29,7 +29,7 @@ var addEvent = (req, res) => {
                     repos.find({id: repo.id}),
                     actors.find({id: actor.id})
                     ]).then(results => {
-                        res.status(201).json({success: });
+                        res.status(201).json({success: true, message: 'Successfully added Ev'});
                     }).catch(err => {
                          res.status(400).json(err);
                     });
