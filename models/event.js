@@ -9,4 +9,4 @@ let EventSchema = mongoose.Schema({
 });
 
 
-export default =  mo
+export default =  mongoose
