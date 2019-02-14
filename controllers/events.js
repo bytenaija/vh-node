@@ -29,7 +29,7 @@ var addEvent = (req, res) => {
                    .then(repo => {
                        if (repo) {
                            return;
-                       } else{
+                       } else {
                            repo.create(repo).then(repo =>{
                                console.log(repo)
                            }).catch(e =>{
