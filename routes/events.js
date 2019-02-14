@@ -3,6 +3,6 @@ var router = express.Router();
 
 // Routes related to event
 
-router.
+router.post()
 
 module.exports = router;
