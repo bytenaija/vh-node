@@ -6,4 +6,4 @@ let RepoSchema = mongoose.Schema({
     url: String
 });
 
-module.exports = mongoose.model('Event', );
+module.exports = mongoose.model('Rep', RepoSchema);
