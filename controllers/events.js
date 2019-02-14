@@ -38,7 +38,7 @@ var addEvent = (req, res) => {
                        }
                    });
                    
-                   actor
+                   actors
                 })
         }
     })
