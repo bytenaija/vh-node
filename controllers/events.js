@@ -37,9 +37,8 @@ var addEvent = (req, res) => {
                            });
                        }
                    });
-
                    actors.find({id: actor.id}).then(actor => {
-                       
+                       i
                    })
                 })
         }
