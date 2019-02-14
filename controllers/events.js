@@ -38,7 +38,7 @@ var addEvent = (req, res) => {
                        }
                    });
                    
-                   actors.find({id: })
+                   actors.find({id: actor})
                 })
         }
     })
