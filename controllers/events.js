@@ -41,7 +41,7 @@ var addEvent = (req, res) => {
                        if (actor) {
                            console.log(actor);
                        } else {
-                            acto.create(repo).then(repo => {
+                            actor.create(repo).then(repo => {
                                console.log(repo);
                            }).catch(e => {
                                console.log(e);
