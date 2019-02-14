@@ -1,6 +1,6 @@
 const events =  require('../models/event')
 var getAllEvents = () => {
-    
+    eve
 };
 
 var addEvent = () => {
