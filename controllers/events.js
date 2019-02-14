@@ -12,7 +12,7 @@ var addEvent = (req, res) => {
     let { event } = req.body;
     let { repo, actor } = event;
     events.find({id: event.id}).then(event =>{
-        if
+        if(event)
     })
     events.create({id: event.id, })
 };
