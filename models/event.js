@@ -6,7 +6,6 @@ let EventSchema = mongoose.Schema({
     actor: {type: mongoose.SchemaTypes.ObjectId, ref: 'Actor'},
     repo: {type: mongoose.SchemaTypes.ObjectId, ref: 'Repo'},
     
-},
-);
+});
 
 
