@@ -27,13 +27,13 @@ var addEvent = (req, res) => {
                 ).then(event => {
                    repo.find({id: repo.id})
                    .then(repo => {
-                       if(repo){
+                       if (repo){
                            return;
                        }else{
                            repo.create(repo).then(repo =>{
                                console.log(repo)
                            }).catch(e =>{
-                               console.log()
+                               console.log(e)
                            })
                        }
                    })
