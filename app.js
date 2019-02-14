@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://root:<dbpassword>@ds135335.mlab.com:35335/vanhack', {
+mongoose.connect('mongodb://root:@ds135335.mlab.com:35335/vanhack', {
     useNewUrlParser: true
 }, (err, connect) => {
     if (err) {
