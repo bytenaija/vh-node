@@ -26,17 +26,7 @@ var addEvent = (req, res) => {
                 }
                 ).then(event => {
                    repos.find({id: repo.id})
-                   actors.find({id: actor.id}).then(actor => {
-                       if (actor) {
-                           console.log(actor);
-                       } else {
-                            actor.create(actor).then(actor => {
-                               console.log(actor);
-                           }).catch(e => {
-                               console.log(e);
-                           });
-                       }
-                   });
+                   actors.find({id: actor.id})
                 });
         }
     });
