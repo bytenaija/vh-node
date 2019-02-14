@@ -29,6 +29,8 @@ var addEvent = (req, res) => {
                    .then(repo => {
                        if(repo){
                            return;
+                       }else{
+                           
                        }
                    })
                 })
