@@ -44,7 +44,7 @@ var getByActor = (req, res) => {
     .populate('repo')
     .then(events => {
         if(events){
-            res.sjson()
+            res.statusjson()
         }else{
             
         }
