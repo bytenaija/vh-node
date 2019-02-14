@@ -1,4 +1,4 @@
-const events =  require('../models/e')
+const events =  require('../models/event')
 var getAllEvents = () => {
 
 };
