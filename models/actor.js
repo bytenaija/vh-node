@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 
 let ActorSchema = mongoose.Schema({
     id: String,
-    : String,
+    login: String,
     url: String
 });
 
