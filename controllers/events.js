@@ -46,11 +46,11 @@ var getByActor = (req, res) => {
         if(events){
             res.status(200).json(events);
         }else{
-            res.status(404).json({success: false, 'Event of that ID not available'})
+            res.status(404).json({success: false, 'Event of that ID not available'});
         }
         
     }).catch(err =>{
-        res.status(500).json({success: false})
+        res.status(500).json({success: false, messag})
     })
 };
 
