@@ -13,7 +13,7 @@ var addEvent = (req, res) => {
     let { repo, actor } = event;
     events.find({id: event.id}).then(event =>{
         if(event){
-            res.status(400).json({error: true, message: 'E'})
+            res.status(400).json({error: true, message: 'Event'})
         }
     })
     events.create({id: event.id, })
