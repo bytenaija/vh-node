@@ -4,7 +4,9 @@ let EventSchema = mongoose.Schema({
     id: String,
     type: String,
 },
-{});
+{
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+});
 
 EventSchema.virtual('actor', {
   ref: 'Actor',
