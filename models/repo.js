@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 
-let EventSchema = mongoose.Schema({
+let  = mongoose.Schema({
     id: String,
     name: String,
     url: String
