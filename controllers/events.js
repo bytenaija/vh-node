@@ -6,7 +6,7 @@ var getAllEvents = (req, res) => {
 };
 
 var addEvent = (req, res) => {
-    let {event] = r
+    let {event] = req
 };
 
 var getByActor = () => {
