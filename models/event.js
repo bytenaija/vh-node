@@ -6,7 +6,7 @@ let EventSchema = mongoose.Schema({
 },
 {
     timestamps: {
-        createdAt: 'created_at'
+        createdAt: 'created_at',
     }
 });
 
