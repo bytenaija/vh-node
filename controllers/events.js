@@ -44,9 +44,9 @@ var getByActor = (req, res) => {
     .populate('repo')
     .then(events => {
         if(events){
-            res.status(200).json()
+            res.status(200).json(e)
         }else{
-            res.status(404).json({success: false, 'Event of that ID not avai'})
+            res.status(404).json({success: false, 'Event of that ID not available'})
         }
         
     })
