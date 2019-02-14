@@ -3,7 +3,7 @@ const repos = require('../models/repo');
 const actors = require('../models/actor');
 
 var getAllEvents = (req, res) => {
-    events.find({}).sort({'_id': 'asc'})
+    events.find({}).sort({'id': 'asc'})
     .then(events => res.status(200).json(events))
     .catch(err => res.status(500).json({error: err}));
 };
