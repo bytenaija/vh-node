@@ -1,4 +1,4 @@
-const events =  require('../models/event');
+const events = require('../models/event');
 const repos =  require('../models/repo');
 const actors =  require('../models/actor');
 
