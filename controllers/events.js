@@ -16,7 +16,7 @@ var getByActor = () => {
 
 
 var eraseEvents = () => {
-    e.remove({}).then
+    events.remove({}).then
 };
 
 module.exports = {
