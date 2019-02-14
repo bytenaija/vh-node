@@ -29,7 +29,7 @@ var addEvent = (req, res) => {
                     repos.find({id: repo.id}),
                     actors.find({id: actor.id})
                     ]).then(results => {
-                        res.status(201).json()   
+                        res.status(201).json();
                     }).catch(err =>{
                         
                     });
