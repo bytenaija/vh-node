@@ -23,7 +23,9 @@ var addEvent = (req, res) => {
                     repo: repo.id,
                     created_at: event.created_at
                 }
-                ).then(event =)
+                ).then(event => {
+                    
+                })
         }
     })
     
