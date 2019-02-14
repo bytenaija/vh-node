@@ -31,8 +31,8 @@ var addEvent = (req, res) => {
                            return;
                        }else{
                            repo.create(repo).then(repo =>{
-                               console.log(rep)
-                           })
+                               console.log(repo)
+                           }).cat
                        }
                    })
                 })
