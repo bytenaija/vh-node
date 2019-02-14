@@ -48,7 +48,6 @@ var getByActor = (req, res) => {
         } else {
             res.status(404).json({success: false, message: 'Event of that ID not available'});
         }
-        
     }).catch(err =>{
         res.status(500).json({success: false, message: 'An error occured. Pleas try again later'});
     })
