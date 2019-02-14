@@ -42,7 +42,7 @@ var getByActor = (req, res) => {
     events.find({actor: req.params.actorID})
     .populate('actor')
     .populate('repo')
-    .then(event => {
+    .then(events => {
         res.json()
     })
 };
