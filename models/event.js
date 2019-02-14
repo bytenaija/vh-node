@@ -13,7 +13,7 @@ EventSchema.virtual('actor', {
 });
 
 EventSchema.virtual('repo', {
-  ref: 'Actor',
+  ref: '',
   localField: 'id',
   foreignField: 'events'
 });
