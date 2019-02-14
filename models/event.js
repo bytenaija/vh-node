@@ -7,7 +7,7 @@ let EventSchema = mongoose.Schema({
 })
 
 EventSchema.virtual('actor', {
-  ref: '',
+  ref: 'Actor',
   localField: '_id',
   foreignField: 'author'
 });
