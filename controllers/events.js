@@ -58,7 +58,7 @@ var getByActor = () => {
 };
 
 var eraseEvents = (req, res) => {
-    events.remove({}).then(result => res.status(200).json())
+    events.remove({}).then(result => res.status(200).json());
 };
 
 module.exports = {
