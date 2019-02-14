@@ -6,7 +6,7 @@ let EventSchema = mongoose.Schema({
     actor: {
 })
 
-.virtual('posts', {
+EventSchema.virtual('actor', {
   ref: 'BlogPost',
   localField: '_id',
   foreignField: 'author'
