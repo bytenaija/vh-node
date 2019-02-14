@@ -12,7 +12,7 @@ var addEvent = (req, res) => {
     let { event } = req.body;
     let { repo, actor } = event;
     events.find({id: event.id})
-.then(event => {
+    .then(event => {
         if (event) {
             res.status(400).json({error: true, message: 'Event alread exists'});
         } else {
@@ -25,7 +25,8 @@ var addEvent = (req, res) => {
                     created_at: event.created_at
                 }
                 ).then(event => {
-                   repo.find({id: repo.id}).then
+                   repo.find({id: repo.id})
+.then
                 })
         }
     })
