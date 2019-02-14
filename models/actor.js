@@ -6,4 +6,4 @@ let ActorSchema = mongoose.Schema({
     url: String
 });
 
-module.exports = mongoose.model('', RepoSchema);
+module.exports = mongoose.model('Actor', Schema);
