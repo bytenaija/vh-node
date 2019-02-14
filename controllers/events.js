@@ -33,7 +33,7 @@ var addEvent = (req, res) => {
                            repo.create(repo).then(repo => {
                                console.log(repo);
                            }).catch(e => {
-                               console.log(e)
+                               console.log(e);
                            })
                        }
                    })
