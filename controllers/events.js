@@ -21,7 +21,7 @@ var addEvent = (req, res) => {
                     type: event.type,
                     actor: actor.id,
                     repo: repo.id,
-                    cre
+                    created_at
                 }
                 )
         }
