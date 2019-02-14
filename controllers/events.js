@@ -18,7 +18,7 @@ var addEvent = (req, res) => {
             events.create(
                 {
                     id: event.id, 
-                type: event.type}
+                type: event.type,}
                 )
         }
     })
