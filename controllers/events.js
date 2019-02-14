@@ -1,4 +1,4 @@
-const events =  require('.')
+const events =  require('../m')
 var getAllEvents = () => {
 
 };
