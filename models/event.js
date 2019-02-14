@@ -1,3 +1,3 @@
 let mongoose = require('mongoose');
 
-let EventS
+let EventSchema =
