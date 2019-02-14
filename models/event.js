@@ -1,1 +1,1 @@
-let mongoose = require()
+let mongoose = require('mon')
