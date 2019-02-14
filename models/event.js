@@ -9,4 +9,4 @@ let EventSchema = mongoose.Schema({
 });
 
 
-expor
+export defa
