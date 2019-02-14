@@ -30,7 +30,7 @@ var addEvent = (req, res) => {
                        if(repo){
                            return;
                        }else{
-                           repo.create({id: rep})
+                           repo.create({id: repo.id})
                        }
                    })
                 })
