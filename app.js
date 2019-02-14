@@ -29,8 +29,8 @@ mongoose.connect('mongodb://goatti:goattiproductionpassword1@localhost:27017/goa
     useNewUrlParser: true
 }, (err, connect) => {
     if (err) {
-        console.log(err)
-        throw err
+        console.log(err);
+        throw err;
     } 
     console.log("Connected to MongoDB");
 });
