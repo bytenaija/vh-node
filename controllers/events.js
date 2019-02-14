@@ -1,4 +1,4 @@
-const events =  req
+const events =  require()
 var getAllEvents = () => {
 
 };
