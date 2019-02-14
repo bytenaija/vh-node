@@ -6,50 +6,61 @@ const getAllActors = (req, res) => {
   console.log("Getting")
   Actor.find({}, '-_id -__v').then(actors => {
     let allActors = []
-    actors.forEach(async (actor, index) => {
+    if (actors.length > 0) {
+      actors.forEach(async (actor, index) => {
 
-      let events = await Event.find({
-        actorId: actor.id
-      }, '-_id -__v').sort({
-        'created_at': -1
-      });
+        let events = await Event.find({
+          actorId: actor.id
+        }, '-_id -__v').sort({
+          'created_at': -1
+        });
 
-      // console.log(event)
-      allActors.push({
-        actor,
-        events
-      })
 
-      if (index === actors.length - 1) {
-        allActors = allActors.sort((a, b) => {
-          if (a.events.length > b.events.length) {
-            return false
-          } else if (b.events.length > a.events.length) {
-            return true
-          } else {
-            // console.log("time diff", moment(a.events[0].created_at).diff(b.events[0].created_at), a.events[0].created_at, b.events[0].created_at)
-            let timeDiff = moment(a.events[0].created_at).diff(b.events[0].created_at);
-            if (timeDiff > 0) {
-             
-              return false;
-            } else if (timeDiff < 0) {
+          allActors.push({
+            actor,
+            events
+          })
 
-              return true
-            } else {
 
-              return a.actor.login - b.actor.login
-            }
+          if (index === actors.length - 1) {
+
+              allActors = allActors.sort((a, b) => {
+                if(a.events){
+                  if (a.events.length > b.events.length) {
+                    return false
+                  } else if (b.events.length > a.events.length) {
+                    return true
+                  } else {
+                    // console.log("time diff", moment(a.events[0].created_at).diff(b.events[0].created_at), a.events[0].created_at, b.events[0].created_at)
+                    let timeDiff = moment(a.events[0].created_at).diff(b.events[0].created_at);
+                    if (timeDiff > 0) {
+
+                      return false;
+                    } else if (timeDiff < 0) {
+
+                      return true
+                    } else {
+
+                      return a.actor.login - b.actor.login
+                    }
+                  }
+                }else{
+                  return true
+                }
+
+              })
+              actors = allActors.reduce((resultActors, all) => {
+                  resultActors.push(all.actor)
+                  return resultActors;
+                },
+                [])
+
+
+            res.status(200).json(actors)
           }
-        })
-        actors = allActors.reduce((resultActors, all) =>{
-          resultActors.push(all.actor)
-          return resultActors;
-        },
-       [])
-        res.status(200).json(actors)
-      }
+        }
 
-    })
+
 
   })
 

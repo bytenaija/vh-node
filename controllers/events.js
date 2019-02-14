@@ -99,7 +99,7 @@ var getByActor = (req, res) => {
 
 var eraseEvents = (req, res) => {
   console.log("erasing")
-    Event.deleteMany({}).then(result => res.status(200)).catch(err => console.log(err));
+    Event.deleteMany({}).then(result => res.status(200).json());
 };
 
 module.exports = {

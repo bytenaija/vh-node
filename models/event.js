@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const moment = require('moment');
 
 let EventSchema = mongoose.Schema({
-  id: String,
+  id: Number,
   type: String,
   actorId: String,
   repoId: String,

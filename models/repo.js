@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const RepoSchema = mongoose.Schema({
-  id: String,
+  id: Number,
   name: String,
   url: String,
 });
