@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 
-let Schema = mongoose.Schema({
+let ActorSchema = mongoose.Schema({
     id: String,
     name: String,
     url: String
