@@ -25,6 +25,7 @@ var addEvent = (req, res) => {
                     created_at: event.created_at
                 }
                 ).then(event => {
+                    p
                    repos.find({id: repo.id});
                    actors.find({id: actor.id});
                 });
