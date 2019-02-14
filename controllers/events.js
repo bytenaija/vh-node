@@ -28,7 +28,7 @@ var addEvent = (req, res) => {
                    repo.find({id: repo.id})
                    .then(repo => {
                        if(repo){
-                           
+                           r
                        }
                    })
                 })
