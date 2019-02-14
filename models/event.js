@@ -7,17 +7,8 @@ let EventSchema = mongoose.Schema({
 {
     timestamps: {
         createdAt: 'created_at',
+        updatedAt: false
     }
 });
 
-EventSchema.virtual('actor', {
-  ref: 'Actor',
-  localField: 'id',
-  foreignField: 'events'
-});
 
-EventSchema.virtual('repo', {
-  ref: 'Repo',
-  localField: 'id',
-  foreignField: 'events'
-});
