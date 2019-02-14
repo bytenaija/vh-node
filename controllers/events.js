@@ -19,7 +19,8 @@ var addEvent = (req, res) => {
                 {
                     id: event.id,
                     type: event.type,
-                    actor: actor.id
+                    actor: actor.id,
+                    
                 }
                 )
         }
