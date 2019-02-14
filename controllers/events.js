@@ -14,7 +14,7 @@ var addEvent = (req, res) => {
     events.find({id: event.id}).then(event =>{
         if(event){
             res.status(400).json({error: true, message: 'Event alread exists'});
-        }
+        }e
     })
     events.create({id: event.id, })
 };
