@@ -1,4 +1,4 @@
-const events =  require('../models/event')
+const events =  require('../models/event');
 var getAllEvents = (req, res) => {
     events.find({}).sort({'_id': 'asc'})
     .then(events => res.status(200).json(events))
@@ -8,7 +8,7 @@ var getAllEvents = (req, res) => {
 var addEvent = (req, res) => {
     let { event } = req.body;
     let { repo, actor } = event;
-
+    
 };
 
 var getByActor = () => {
