@@ -1,5 +1,5 @@
 const events =  require('../models/event');
-const repos =  require('../models/event');
+const repos =  require('../models/r');
 const events =  require('../models/event');
 
 var getAllEvents = (req, res) => {
