@@ -1,4 +1,4 @@
-l
+const 
 var getAllEvents = () => {
 
 };
