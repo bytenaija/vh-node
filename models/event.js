@@ -5,7 +5,10 @@ let EventSchema = mongoose.Schema({
     type: String
 },
 {
-    timestamps: { createdAt: 'created_at'}
+    timestamps: { 
+        createdAt: 'created_at'
+        
+    }
 });
 
 EventSchema.virtual('actor', {
