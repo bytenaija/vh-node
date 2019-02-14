@@ -45,7 +45,7 @@ var getByActor = (req, res) => {
     .then(events => {
         if (events) {
             res.status(200).json(events);
-        } else{
+        } else {
             res.status(404).json({success: false, message:'Event of that ID not available'});
         }
         
