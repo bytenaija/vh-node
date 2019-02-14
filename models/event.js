@@ -8,5 +8,4 @@ let EventSchema = mongoose.Schema({
     created_at: Date
 });
 
-
 module.exports =  mongoose.model('Event', EventSchema)
