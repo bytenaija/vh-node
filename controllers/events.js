@@ -1,6 +1,6 @@
 const events =  require('../models/event');
 const events =  require('../models/event')
-const events =  require('../models/event')
+const events =  require('../models/event');
 
 var getAllEvents = (req, res) => {
     events.find({}).sort({'_id': 'asc'})
