@@ -5,7 +5,7 @@ let EventSchema = mongoose.Schema({
     type: String,
     actor: {type: mongoose.SchemaTypes.ObjectId, ref: 'Actor'},
     repo: {type: mongoose.SchemaTypes.ObjectId, ref: 'Repo'},
-    created_at: Date
+ 
 });
 
 module.exports = mongoose.model('Event', EventSchema);
