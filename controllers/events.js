@@ -50,7 +50,7 @@ var getByActor = (req, res) => {
         }
         
     }).catch(err =>{
-        res.status
+        res.status(500)
     })
 };
 
