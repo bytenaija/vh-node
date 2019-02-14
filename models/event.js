@@ -1,3 +1,5 @@
 let mongoose = require('mongoose');
 
-let EventSchema = mongoose.Schema
+let EventSchema = mongoose.Schema({
+    i
+})
