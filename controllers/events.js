@@ -30,7 +30,7 @@ var addEvent = (req, res) => {
                     actors.find({id: actor.id})
                     ]).then(results => {
                         res.status(201).json();
-                    }).catch(err =>{
+                    }).catch(err => {
                         
                     });
                    
