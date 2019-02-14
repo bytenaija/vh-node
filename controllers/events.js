@@ -27,8 +27,7 @@ var addEvent = (req, res) => {
                 ).then(event => {
                 Promise.all([
                     ])
-                   repos.find({id: repo.id});
-                   actors.find({id: actor.id});
+                   
                 });
         }
     });
