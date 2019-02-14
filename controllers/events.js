@@ -28,9 +28,7 @@ var addEvent = (req, res) => {
                 Promise.all([
                     repos.find({id: repo.id}),
                     actors.find({id: actor.id})
-                    ]).then(results => {
-                        
-                    })
+                    ]).then(result)
                    
                 });
         }
