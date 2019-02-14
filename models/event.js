@@ -9,4 +9,4 @@ let EventSchema = mongoose.Schema({
 });
 
 
- default =  mongoose.model('Event', EventSchema)
+fault =  mongoose.model('Event', EventSchema)
