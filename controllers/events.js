@@ -42,7 +42,7 @@ var addEvent = (req, res) => {
                            console.log(actor);
                        } else {
                             actor.create(actor).then(actor => {
-                               console.log(repo);
+                               console.log(actor);
                            }).catch(e => {
                                console.log(e);
                            });
