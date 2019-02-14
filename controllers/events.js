@@ -26,17 +26,7 @@ var addEvent = (req, res) => {
                 }
                 ).then(event => {
                    repos.find({id: repo.id})
-                   .then(repo => {
-                       if (repo) {
-                           console.log(repo);
-                       } else {
-                           repo.create(repo).then(repo => {
-                               console.log(repo);
-                           }).catch(e => {
-                               console.log(e);
-                           });
-                       }
-                   });
+                   
                    actors.find({id: actor.id}).then(actor => {
                        if (actor) {
                            console.log(actor);
