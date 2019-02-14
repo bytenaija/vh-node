@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 
-let RepoSchema = mongoose.Schema({
+let Schema = mongoose.Schema({
     id: String,
     name: String,
     url: String
