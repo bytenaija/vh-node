@@ -48,7 +48,7 @@ var addEvent = (req, res) => {
                            });
                        }
                    })
-                })
+                });
         }
     })
     
