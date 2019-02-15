@@ -4,7 +4,7 @@ const Event = require('../models/event')
 let moment = require('moment')
 const getAllActors = (req, res) => {
   console.log("Getting")
-  Actor.find({}, '-_id -__v -events').then(actors => {
+  Actor.find({}, '-_id -__v -event').then(actors => {
     let allActors = []
 
     actors.forEach(async (actor, index) => {
@@ -23,7 +23,7 @@ const getAllActors = (req, res) => {
 
 
       if (index === actors.length - 1) {
-
+          console.log(allActors.length)
         allActors = allActors.sort((a, b) => {
           if (a.events) {
             if (a.events.length > b.events.length) {
@@ -93,16 +93,14 @@ const updateActor = (req, res) => {
 const getStreak = (req, res) => {
   Actor.find({}, '-_id -__v').then(actors => {
     let allActors = []
-  actors.forEach((actor, index) =>{
-    actor.events.forEach( async event => {
-     let oneEvent = await Event.findOne({id: event});
-     delete actor.events;
-     allActors.push({actor, event: oneEvent.created_at});
+  actors.forEach(async (actor, index) =>{
+    console.log(actor)
+     let oneEvent = await Event.findOne({id: actor.event});
 
-     if (index === actors.length - 1) {
-       let sorted = []
-       let count = 0;
-        console.log()
+     allActors.push({actor, event: oneEvent.created_at});
+      console.log(index, actors.length - 1, index == actors.length - 1)
+     if (index == actors.length - 1) {
+       console.log(allActors.length)
       allActors.sort((a, b) =>{
         let count = {}
         if(a.actor.login === b.actor.login){
@@ -137,7 +135,6 @@ const getStreak = (req, res) => {
 
   })
 
-})
 }
 
 

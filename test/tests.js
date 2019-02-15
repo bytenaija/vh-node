@@ -87,7 +87,7 @@ describe('git_test ', function() {
 								continue;
               }
 
-
+              console.log("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", e.request.url)
 		 					expect(ar2.length).to.equal(ar1.length);
 							for (let k = 0; k < ar1.length; k++) {
 								expect(ar2[k]).to.deep.equal(ar1[k]);
@@ -97,7 +97,7 @@ describe('git_test ', function() {
 							expect(results[j].status).to.equal(e.response.status_code);
 						}
 						if (e.request.method == "DELETE") {
-            
+
 							expect(results[j].status).to.equal(e.response.status_code);
 						}
 						if (e.request.method == "PUT") {

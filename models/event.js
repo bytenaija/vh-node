@@ -32,52 +32,14 @@ const EventSchema = mongoose.Schema({
 
    EventSchema.pre('remove', async function (next) {
 
-    await mongoose.model('Actor').findOne({
+    await mongoose.model('Actor').remove({
       id: this.actorId
-    }).then(actor => {
-
-      if(actor){
-        if (actor.events.length > 1) {
-
-          actor.events = actor.events.filter(event => event.toString() !== this.id.toString())
-
-          if (actor.events.length > 0) {
-            return actor.save();
-          } else {
-           return actor.remove();
-          }
-          return Promise.resolve()
-        } else {
-
-         return mongoose.model('Actor').deleteOne({ id: this.actorId });
-
-        }
-      };
-      });
+    })
 
 
-     await mongoose.model('Repo').findOne({
+     await mongoose.model('Repo').remove({
        id: this.repoId
-     }).then(repo => {
-
-       if (repo) {
-         if (repo.events.length > 1) {
-
-           repo.events = repo.events.filter(event => event.toString() !== this.id.toString())
-
-           if(repo.events.length > 0){
-            return repo.save();
-           }else{
-            return repo.remove();
-           }
-
-         } else {
-
-          return mongoose.model('Repo').deleteOne({ id: this.repoId });
-
-         }
-       };
-     });
+     })
 
     next()
   });
