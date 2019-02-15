@@ -4,7 +4,9 @@ const RepoSchema = mongoose.Schema({
   id: Number,
   name: String,
   url: String,
-  event: String,
+   events: [{
+     type: String
+   }],
 });
 
 

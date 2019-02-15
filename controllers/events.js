@@ -5,7 +5,7 @@ const Event = require('../models/event');
 var getAllEvents = (req, res) => {
     Event.find({}).sort({
       'id': 'asc'
-    }).populate('actor', '-_id -__v').populate('repo', '-_id -__v')
+    }).populate('actor', '-_id -__v -events').populate('repo', '-_id -__v -events')
     .then(events => {
 
       if(events){
@@ -31,7 +31,7 @@ var addEvent = (req, res) => {
     let { repo, actor } = event;
     repo.event = event.id;
     actor.event = event.id
-    console.log(actor)
+
     Event.find({id: event.id})
     .then(eventResult => {
 
@@ -52,17 +52,40 @@ var addEvent = (req, res) => {
                         Repo.findOne({id: repo.id}).then(repoResult =>{
 
                           if (repoResult) {
-                            return Promise.resolve()
+                            console.log("contanssss", repoResult.events.includes(repo.event))
+                            if (repoResult.events.includes(repo.event)){
+                              return Promise.resolve()
+                            }else{
+                              repoResult.events.push(repo.event)
+                              repoResult.save()
+                              return Promise.resolve()
+                            }
+
                           }else{
-                            return Repo.create(repo)
+
+                           return Repo.create(repo).then(repoResult => {
+                             repoResult.events.push(repo.event);
+                             repoResult.save();
+                             return Promise.resolve();
+                           })
                           }
                         }),
                         Actor.findOne({id: actor.id}).then(actorResult =>{
 
                           if (actorResult) {
+                            if (actorResult.events.includes(actor.event)) {
+                              return Promise.resolve()
+                            }
+                             actorResult.events.push(actor.event)
+                             actorResult.save()
                             return Promise.resolve()
                           } else {
-                            return Actor.create(actor)
+                            return Actor.create(actor).then(actorResult =>{
+                              actorResult.events.push(actor.event);
+                              actorResult.save()
+                              return Promise.resolve();
+
+                            })
                           }
                         })
                         ]).then(results => {
@@ -85,8 +108,8 @@ var addEvent = (req, res) => {
 
 var getByActor = (req, res) => {
     Event.find({actorId: req.params.actorID}).sort({'id': 'asc'})
-    .populate('actor', '-_id -__v')
-    .populate('repo', '-_id -__v')
+    .populate('actor', '-_id -__v -events')
+    .populate('repo', '-_id -__v -events')
     .then(events => {
         if (events) {
 
@@ -100,10 +123,22 @@ var getByActor = (req, res) => {
 };
 
 var eraseEvents = (req, res) => {
-  console.log("erasing")
-    Event.deleteMany({}).then(result => res.status(200).json());
-};
+   Event.find({}).then(events =>{
+     let eventLength = events.length;
+      events.forEach(async (event, index) => {
 
+       await event.remove();
+
+        if (index == eventLength -1) {
+
+            res.status(200).json()
+        }
+      });
+    })
+
+
+};
+// "pretest": "npm install",
 module.exports = {
 	getAllEvents: getAllEvents,
 	addEvent: addEvent,

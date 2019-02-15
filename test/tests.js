@@ -30,11 +30,13 @@ describe('git_test ', function() {
 					}
 				});
 				Promise.mapSeries(event, (e) => {
-					let eve = JSON.parse(e);
+          let eve = JSON.parse(e);
+
 					if(eve.request.method == "DELETE") {
 						return chai.request(server)
 							.delete(eve.request.url)
 							.then((res) => {
+
 								return res;
 							}).catch((err) => {
 								return err;
@@ -75,15 +77,17 @@ describe('git_test ', function() {
 
 				}).then((results) => {
 					for (let j = 0; j < results.length; j++) {
-						let e = JSON.parse(event[j]);
+            let e = JSON.parse(event[j]);
 						if(e.request.method == "GET") {
+
 							results[j].should.have.status(e.response.status_code);
 							let ar1 = results[j].body;
 							let ar2 = e.response.body;
 							if(e.response.status_code == 404) {
 								continue;
               }
-              console.log("Collector", ar2.length, ar1.length)
+
+
 		 					expect(ar2.length).to.equal(ar1.length);
 							for (let k = 0; k < ar1.length; k++) {
 								expect(ar2[k]).to.deep.equal(ar1[k]);
@@ -93,6 +97,7 @@ describe('git_test ', function() {
 							expect(results[j].status).to.equal(e.response.status_code);
 						}
 						if (e.request.method == "DELETE") {
+            
 							expect(results[j].status).to.equal(e.response.status_code);
 						}
 						if (e.request.method == "PUT") {

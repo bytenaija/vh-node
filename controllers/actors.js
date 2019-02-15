@@ -4,61 +4,61 @@ const Event = require('../models/event')
 let moment = require('moment')
 const getAllActors = (req, res) => {
   console.log("Getting")
-  Actor.find({}, '-_id -__v').then(actors => {
+  Actor.find({}, '-_id -__v -events').then(actors => {
     let allActors = []
 
-      actors.forEach(async (actor, index) => {
+    actors.forEach(async (actor, index) => {
 
-        let events = await Event.find({
-          actorId: actor.id
-        }, '-_id -__v').sort({
-          'created_at': -1
-        });
-
-
-          allActors.push({
-            actor,
-            events
-          })
+      let events = await Event.find({
+        actorId: actor.id
+      }, '-_id -__v').sort({
+        'created_at': -1
+      });
 
 
-          if (index === actors.length - 1) {
-
-              allActors = allActors.sort((a, b) => {
-                if(a.events){
-                  if (a.events.length > b.events.length) {
-                    return false
-                  } else if (b.events.length > a.events.length) {
-                    return true
-                  } else {
-                    // console.log("time diff", moment(a.events[0].created_at).diff(b.events[0].created_at), a.events[0].created_at, b.events[0].created_at)
-                    let timeDiff = moment(a.events[0].created_at).diff(b.events[0].created_at);
-                    if (timeDiff > 0) {
-
-                      return false;
-                    } else if (timeDiff < 0) {
-
-                      return true
-                    } else {
-
-                      return a.actor.login > b.actor.login
-                    }
-                  }
-                }else{
-                  return a.actor.login < b.actor.login
-                }
-
-              })
-              actors = allActors.reduce((resultActors, all) => {
-                  resultActors.push(all.actor)
-                  return resultActors;
-                },
-                [])
+      allActors.push({
+        actor,
+        events
+      })
 
 
-            res.status(200).json(actors)
+      if (index === actors.length - 1) {
+
+        allActors = allActors.sort((a, b) => {
+          if (a.events) {
+            if (a.events.length > b.events.length) {
+              return false
+            } else if (b.events.length > a.events.length) {
+              return true
+            } else {
+              // console.log("time diff", moment(a.events[0].created_at).diff(b.events[0].created_at), a.events[0].created_at, b.events[0].created_at)
+              let timeDiff = moment(a.events[0].created_at).diff(b.events[0].created_at);
+              if (timeDiff > 0) {
+
+                return false;
+              } else if (timeDiff < 0) {
+
+                return true
+              } else {
+
+                return a.actor.login > b.actor.login
+              }
+            }
+          } else {
+            return a.actor.login < b.actor.login
           }
+
         })
+        actors = allActors.reduce((resultActors, all) => {
+            resultActors.push(all.actor)
+            return resultActors;
+          },
+          [])
+
+
+        res.status(200).json(actors)
+      }
+    })
 
 
 
@@ -78,7 +78,6 @@ const updateActor = (req, res) => {
       id
     }, req.body)
     .then(actor => {
-      console.log("Successss")
       res.status(200).json()
     }).catch(err => {
       console.log(err)
@@ -92,9 +91,54 @@ const updateActor = (req, res) => {
 };
 
 const getStreak = (req, res) => {
-  console.log("streaking")
-  res.status(200).json()
-};
+  Actor.find({}, '-_id -__v').then(actors => {
+    let allActors = []
+  actors.forEach((actor, index) =>{
+    actor.events.forEach( async event => {
+     let oneEvent = await Event.findOne({id: event});
+     delete actor.events;
+     allActors.push({actor, event: oneEvent.created_at});
+
+     if (index === actors.length - 1) {
+       let sorted = []
+       let count = 0;
+        console.log()
+      allActors.sort((a, b) =>{
+        let count = {}
+        if(a.actor.login === b.actor.login){
+         if (moment(a.event).startOf('day').diff(moment(b.event).startOf('day'), 'day') == 1 || moment(a.event).add(1, 'day').startOf('day').diff(moment(b.event).startOf('day'), 'day') == -1) {
+          return true;
+         }else{
+         return false;
+         }
+        }else{
+           if (moment(a.event).diff(moment(b.event)) > 0) {
+             return false;
+           } else if (moment(a.event).diff(moment(b.event))< 0) {
+            return true
+           }else{
+             return a.actor.login > b.actor.login
+           }
+        }
+      })
+      allActors = allActors.reduce(function(actors, oneActor){
+
+        let {actor} = oneActor;
+       actor = {id: actor.id, login: actor.login, avatar_url: actor.avatar_url}
+
+        actors.push(actor)
+        return actors;
+      }, []);
+
+       res.status(200).json(allActors)
+     }
+    })
+
+
+  })
+
+})
+}
 
 
 module.exports = {

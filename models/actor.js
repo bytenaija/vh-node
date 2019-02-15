@@ -4,7 +4,7 @@ let ActorSchema = mongoose.Schema({
     id: Number,
     login: String,
     avatar_url: String,
-     event: String,
+     events: [ { type: String } ],
 });
 
 module.exports = mongoose.model('Actor', ActorSchema);
