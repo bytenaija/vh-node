@@ -29,7 +29,9 @@ var addEvent = (req, res) => {
     let  event  = req.body;
 
     let { repo, actor } = event;
-    // console.log(event)
+    repo.event = event.id;
+    actor.event = event.id
+    console.log(actor)
     Event.find({id: event.id})
     .then(eventResult => {
 

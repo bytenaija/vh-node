@@ -51,10 +51,16 @@ EventSchema.methods.toJSON =  function (){
 }
 
 
-EventSchema.pre('remove', function (next) {
-  // Remove all the assignment docs that reference the removed person.
-  this.model('Actor').remove({
+EventSchema.pre('remove', async function (next) {
+  // Remove all the assignment docs that reference the removed event.
+ await this.model('Actor').remove({
     event: this.id
-  }, next);
+  });
+
+  await this.model('Repo').remove({
+    event: this.id
+  });
+
+  next()
 });
 module.exports = mongoose.model('Event', EventSchema);
