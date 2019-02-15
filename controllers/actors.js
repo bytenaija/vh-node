@@ -15,7 +15,6 @@ const getAllActors = (req, res) => {
         'created_at': -1
       });
 
-
       allActors.push({
         actor,
         events
@@ -23,7 +22,7 @@ const getAllActors = (req, res) => {
 
 
       if (index === actors.length - 1) {
-          console.log(allActors.length)
+        console.log(allActors.length)
         allActors = allActors.sort((a, b) => {
           if (a.events) {
             if (a.events.length > b.events.length) {
@@ -93,43 +92,54 @@ const updateActor = (req, res) => {
 const getStreak = (req, res) => {
   Actor.find({}, '-_id -__v').then(actors => {
     let allActors = []
-  actors.forEach(async (actor, index) =>{
-    console.log(actor)
-     let oneEvent = await Event.findOne({id: actor.event});
+    actors.forEach(async (actor, index) => {
+      console.log(actor)
+      let oneEvent = await Event.findOne({
+        id: actor.event
+      });
 
-     allActors.push({actor, event: oneEvent.created_at});
+      allActors.push({
+        actor,
+        event: oneEvent.created_at
+      });
       console.log(index, actors.length - 1, index == actors.length - 1)
-     if (index == actors.length - 1) {
-       console.log(allActors.length)
-      allActors.sort((a, b) =>{
-        let count = {}
-        if(a.actor.login === b.actor.login){
-         if (moment(a.event).startOf('day').diff(moment(b.event).startOf('day'), 'day') == 1 || moment(a.event).add(1, 'day').startOf('day').diff(moment(b.event).startOf('day'), 'day') == -1) {
-          return true;
-         }else{
-         return false;
-         }
-        }else{
-           if (moment(a.event).diff(moment(b.event)) > 0) {
-             return false;
-           } else if (moment(a.event).diff(moment(b.event))< 0) {
-            return true
-           }else{
-             return a.actor.login > b.actor.login
-           }
-        }
-      })
-      allActors = allActors.reduce(function(actors, oneActor){
+      if (index == actors.length - 1) {
+        console.log(allActors.length)
+        allActors.sort((a, b) => {
+          let count = {}
+          if (a.actor.login === b.actor.login) {
+            if (moment(a.event).startOf('day').diff(moment(b.event).startOf('day'), 'day') == 1 || moment(a.event).add(1, 'day').startOf('day').diff(moment(b.event).startOf('day'), 'day') == -1) {
+              return true;
+            } else {
+              return false;
+            }
+          } else {
+            if (moment(a.event).diff(moment(b.event)) > 0) {
+              return false;
+            } else if (moment(a.event).diff(moment(b.event)) < 0) {
+              return true
+            } else {
+              return a.actor.login > b.actor.login
+            }
+          }
+        })
+        allActors = allActors.reduce(function (actors, oneActor) {
 
-        let {actor} = oneActor;
-       actor = {id: actor.id, login: actor.login, avatar_url: actor.avatar_url}
+          let {
+            actor
+          } = oneActor;
+          actor = {
+            id: actor.id,
+            login: actor.login,
+            avatar_url: actor.avatar_url
+          }
 
-        actors.push(actor)
-        return actors;
-      }, []);
+          actors.push(actor)
+          return actors;
+        }, []);
 
-       res.status(200).json(allActors)
-     }
+        res.status(200).json(allActors)
+      }
     })
 
 
